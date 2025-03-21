@@ -37,6 +37,27 @@ document.addEventListener("DOMContentLoaded", function() {
         const { caught, total } = pokemonData[region];
         totalCaught += caught;
         totalPokemon += total;
+
+            document.addEventListener("DOMContentLoaded", function () {
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        // แสดงปุ่มเมื่อเลื่อนลงมา
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
+
+        // เลื่อนกลับไปบนสุดเมื่อกดปุ่ม
+        backToTopBtn.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
+    });
         
         // สร้างการ์ดสำหรับแต่ละภูมิภาค
         const percentCaught = Math.round((caught / total) * 100);
