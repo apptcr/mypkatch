@@ -215,81 +215,9 @@
             opacity: 0.15;
             z-index: 0;
         }
-
-	    /* CSS สำหรับปุ่มกลับไปบนสุด */
-#backToTopBtn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 80px;
-    height: 80px;
-    background-color: #3466af;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    display: none; /* ซ่อนปุ่มก่อน */
-    transition: all 0.3s ease;
-    z-index: 1000;
-    /* เพิ่มขอบเพื่อให้ดูโดดเด่นขึ้น */
-    border: 2px solid #ffcb05;
-}
-
-#backToTopBtn:hover {
-    background-color: #ffcb05;
-    color: #3466af;
-    transform: translateY(-5px);
-}
-
     </style>
 </head>
-<script>
-// JavaScript สำหรับปุ่มกลับไปบนสุด
-document.addEventListener("DOMContentLoaded", function() {
-    // เลือกปุ่ม back to top
-    const backToTopBtn = document.getElementById("backToTopBtn");
-    
-    // ตรวจสอบว่าปุ่มถูกสร้างขึ้นในหน้าเว็บหรือไม่
-    if (backToTopBtn) {
-        // แสดงปุ่มเมื่อเลื่อนลงมามากกว่า 300px
-        window.addEventListener("scroll", function() {
-            if (window.scrollY > 300) {
-                backToTopBtn.style.display = "block";
-                
-                // เพิ่ม animation เล็กน้อยเมื่อปุ่มปรากฏ
-                setTimeout(() => {
-                    backToTopBtn.style.opacity = "1";
-                }, 10);
-            } else {
-                backToTopBtn.style.opacity = "0";
-                
-                // ซ่อนปุ่มหลังจาก animation เสร็จสิ้น
-                setTimeout(() => {
-                    backToTopBtn.style.display = "none";
-                }, 300);
-            }
-        });
-        
-        // เมื่อคลิกที่ปุ่ม ให้เลื่อนกลับไปด้านบนของหน้าเว็บ
-        backToTopBtn.addEventListener("click", function() {
-            // เลื่อนไปด้านบนอย่างนุ่มนวล
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    }
-});
-</script>
-
 <body>
-<!-- HTML สำหรับปุ่มกลับไปบนสุด -->
-<button id="backToTopBtn" title="กลับไปบนสุด">
-    <i class="arrow-up"><img src="BT.png" alt="Pokéball" style="width: 75px; vertical-align: middle; margin-right: 10px;"></i>
-</button>
-
     <nav>
         <div class="nav-logo">
             <!--<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Pokéball" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 10px;">-->
