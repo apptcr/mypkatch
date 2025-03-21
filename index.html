@@ -239,6 +239,37 @@
 
     </style>
 </head>
+	<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        // ตรวจสอบว่าปุ่มมีอยู่ใน DOM
+        if (!backToTopBtn) {
+            console.error("❌ ไม่พบปุ่ม backToTopBtn ในหน้าเว็บ!");
+            return;
+        }
+
+        // แสดงปุ่มเมื่อเลื่อนลงมา
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
+
+        // เลื่อนกลับไปบนสุดเมื่อกดปุ่ม
+        backToTopBtn.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
+
+        console.log("✅ ปุ่มกลับไปบนสุดถูกโหลดสำเร็จ!");
+    });
+</script>
+
 <body>
 	<!-- ปุ่มกลับไปบนสุด -->
 <button id="backToTopBtn" title="กลับไปบนสุด">⬆️</button>
