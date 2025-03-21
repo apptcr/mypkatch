@@ -239,15 +239,17 @@
 
     </style>
 </head>
-	<script>
+<script>
     document.addEventListener("DOMContentLoaded", function () {
+        console.log("🔄 กำลังโหลดปุ่ม...");
         const backToTopBtn = document.getElementById("backToTopBtn");
 
-        // ตรวจสอบว่าปุ่มมีอยู่ใน DOM
         if (!backToTopBtn) {
-            console.error("❌ ไม่พบปุ่ม backToTopBtn ในหน้าเว็บ!");
+            console.error("❌ ไม่พบปุ่ม backToTopBtn ใน DOM!");
             return;
         }
+
+        console.log("✅ ปุ่ม backToTopBtn ถูกโหลดแล้ว!");
 
         // แสดงปุ่มเมื่อเลื่อนลงมา
         window.addEventListener("scroll", function () {
@@ -258,15 +260,13 @@
             }
         });
 
-        // เลื่อนกลับไปบนสุดเมื่อกดปุ่ม
+        // คลิกปุ่มเพื่อกลับไปบนสุด
         backToTopBtn.addEventListener("click", function () {
             window.scrollTo({
                 top: 0,
                 behavior: "smooth",
             });
         });
-
-        console.log("✅ ปุ่มกลับไปบนสุดถูกโหลดสำเร็จ!");
     });
 </script>
 
