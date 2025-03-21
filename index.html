@@ -215,64 +215,80 @@
             opacity: 0.15;
             z-index: 0;
         }
-	    #backToTopBtn {
+
+	    /* CSS สำหรับปุ่มกลับไปบนสุด */
+#backToTopBtn {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 30px;
+    right: 30px;
     width: 50px;
     height: 50px;
-    background-color: #ffcb05;
-    color: #333;
+    background-color: #3466af;
+    color: white;
     border: none;
     border-radius: 50%;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     display: none; /* ซ่อนปุ่มก่อน */
-    transition: opacity 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    /* เพิ่มขอบเพื่อให้ดูโดดเด่นขึ้น */
+    border: 2px solid #ffcb05;
 }
 
 #backToTopBtn:hover {
-    background-color: #ffab00;
-    transform: scale(1.1);
+    background-color: #ffcb05;
+    color: #3466af;
+    transform: translateY(-5px);
 }
 
     </style>
 </head>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        console.log("🔄 กำลังโหลดปุ่ม...");
-        const backToTopBtn = document.getElementById("backToTopBtn");
-
-        if (!backToTopBtn) {
-            console.error("❌ ไม่พบปุ่ม backToTopBtn ใน DOM!");
-            return;
-        }
-
-        console.log("✅ ปุ่ม backToTopBtn ถูกโหลดแล้ว!");
-
-        // แสดงปุ่มเมื่อเลื่อนลงมา
-        window.addEventListener("scroll", function () {
+// JavaScript สำหรับปุ่มกลับไปบนสุด
+document.addEventListener("DOMContentLoaded", function() {
+    // เลือกปุ่ม back to top
+    const backToTopBtn = document.getElementById("backToTopBtn");
+    
+    // ตรวจสอบว่าปุ่มถูกสร้างขึ้นในหน้าเว็บหรือไม่
+    if (backToTopBtn) {
+        // แสดงปุ่มเมื่อเลื่อนลงมามากกว่า 300px
+        window.addEventListener("scroll", function() {
             if (window.scrollY > 300) {
                 backToTopBtn.style.display = "block";
+                
+                // เพิ่ม animation เล็กน้อยเมื่อปุ่มปรากฏ
+                setTimeout(() => {
+                    backToTopBtn.style.opacity = "1";
+                }, 10);
             } else {
-                backToTopBtn.style.display = "none";
+                backToTopBtn.style.opacity = "0";
+                
+                // ซ่อนปุ่มหลังจาก animation เสร็จสิ้น
+                setTimeout(() => {
+                    backToTopBtn.style.display = "none";
+                }, 300);
             }
         });
-
-        // คลิกปุ่มเพื่อกลับไปบนสุด
-        backToTopBtn.addEventListener("click", function () {
+        
+        // เมื่อคลิกที่ปุ่ม ให้เลื่อนกลับไปด้านบนของหน้าเว็บ
+        backToTopBtn.addEventListener("click", function() {
+            // เลื่อนไปด้านบนอย่างนุ่มนวล
             window.scrollTo({
                 top: 0,
-                behavior: "smooth",
+                behavior: "smooth"
             });
         });
-    });
+    }
+});
 </script>
 
 <body>
-	<!-- ปุ่มกลับไปบนสุด -->
-<button id="backToTopBtn" title="กลับไปบนสุด">⬆️</button>
+<!-- HTML สำหรับปุ่มกลับไปบนสุด -->
+<button id="backToTopBtn" title="กลับไปบนสุด">
+    <i class="arrow-up">⬆️</i>
+</button>
 
     <nav>
         <div class="nav-logo">
